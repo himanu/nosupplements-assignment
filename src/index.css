@@ -10,7 +10,6 @@
   box-sizing: border-box;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
 }
 .example {
   margin: 50px 100px;
