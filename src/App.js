@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import User from "./User";
 export default function App() {
   const [users, setUsers] = useState([]);
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
     async function fetchData() {
       const response = await fetch(
@@ -10,12 +11,25 @@ export default function App() {
       );
       let data = await response.json();
       setUsers(data);
+      setLoading(false);
     }
     fetchData();
   }, []);
   return (
     <div className="App">
-      {users.map((user) => {
+      {loading && (
+        <div class="example">
+          <div class="sk-chase">
+            <div class="sk-chase-dot"></div>
+            <div class="sk-chase-dot"></div>
+            <div class="sk-chase-dot"></div>
+            <div class="sk-chase-dot"></div>
+            <div class="sk-chase-dot"></div>
+            <div class="sk-chase-dot"></div>
+          </div>
+        </div>
+      )}
+      {!loading && users.map((user) => {
         return (
           <User
             user={user}
